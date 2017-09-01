@@ -24,9 +24,11 @@
   networking.defaultGateway = "192.168.1.1";
   networking.nameservers = [ "8.8.8.8" ];
   networking.wireless.networks = {
-    "1529 E 19th-2" = {
-    psk = "abc7654321";
-    };
+
+    # dont use wifi as it overwrites the default gateway  
+    # "1529 E 19th-2" = {
+    # psk = "abc7654321";
+    # };
   };
 
   # Select internationalisation properties.
