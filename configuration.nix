@@ -18,18 +18,13 @@
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
 
-  networking.hostName = "cpu4desk"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.interfaces.enp14s0.ip4 = [ { address = "192.168.1.200"; prefixLength = 24; } ];
-  networking.defaultGateway = "192.168.1.1";
-  networking.nameservers = [ "8.8.8.8" ];
-  networking.wireless.networks = {
+  networking = {
+    hostName = "cpu4desk"; # Define your hostname.
+    interfaces.enp14s0.ip4 = [ { address = "192.168.1.200"; prefixLength = 24; } ];
+    defaultGateway = "192.168.1.254";
+    nameservers = [ "8.8.8.8" ];
+    };
 
-    # dont use wifi as it overwrites the default gateway  
-    # "1529 E 19th-2" = {
-    # psk = "abc7654321";
-    # };
-  };
 
   # Select internationalisation properties.
   i18n = {
