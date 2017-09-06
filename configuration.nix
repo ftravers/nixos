@@ -102,19 +102,21 @@
   system.stateVersion = "17.03";
 
 
-  containers.foo =
-    {
-        autoStart = true; 
-  config =
+  # Containers
+  containers.foo = {
+    autoStart = true; 
 
-        { config, pkgs, ...}: {
+    privateNetwork = true;
 
-        # Auto start the container
+    hostAddress = "192.168.1.200";
 
+    localAddress = "192.168.1.201";
 
-        # Set your time zone.
-        time.timeZone = "America/Vancouver";
-      };
-    }; 
+      config =
+      { config, pkgs, ...}: {
+      # Set your time zone.
+      time.timeZone = "America/Vancouver";
+    };
+  }; 
 }
 
