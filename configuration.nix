@@ -45,9 +45,14 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    wget vim emacs git mkpasswd zsh autoconf gnumake dhcpcd tree
+    wget vim emacs git mkpasswd zsh autoconf gnumake dhcpcd tree 
+    rxvt ncurses rxvt_unicode.terminfo rxvt_unicode
   ];
 
+
+  environment.sessionVariables = {
+  TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
+};
 
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
