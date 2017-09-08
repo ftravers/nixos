@@ -46,7 +46,7 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     wget vim emacs git mkpasswd zsh autoconf gnumake dhcpcd tree 
-    rxvt ncurses rxvt_unicode.terminfo rxvt_unicode
+    rxvt_unicode
   ];
 
 
