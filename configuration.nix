@@ -16,6 +16,7 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
+  
   # Networking
   networking = {
     hostName = "cpu4desk"; # Define your hostname.
@@ -40,10 +41,19 @@
     hostAddress = "192.168.1.200";
     localAddress = "192.168.1.201";
     config = { config, pkgs, ...}: {
+
       # Set your time zone.
       time.timeZone = "America/Vancouver";
+
       networking.firewall.enable = false;
       services.openssh.enable = true;
+
+      # List packages installed in system profile
+      environment.systemPackages = with pkgs; [
+        wget vim emacs git zsh autoconf gnumake tree 
+        ncurses rxvt_unicode openjdk leiningen
+      ];
+
       users.extraUsers.fenton = {
         isNormalUser = true;
         uid = 1000;
@@ -55,13 +65,14 @@
   }; 
   
 
-    # Select internationalisation properties.
+  # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
 
+  
   # Set your time zone.
   # time.timeZone = "America/Vancouver";
   time.timeZone = "America/Toronto";
