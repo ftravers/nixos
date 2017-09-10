@@ -35,7 +35,8 @@
 
 
   # Containers
-  containers.foo = {
+
+    containers.fud = {
     autoStart = true; 
     privateNetwork = true;
     hostAddress = "192.168.1.200";
@@ -88,9 +89,10 @@
 
 
   environment.sessionVariables = {
-  TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
-};
+    TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
+  };
 
+  
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
