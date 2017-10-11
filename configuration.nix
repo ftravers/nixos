@@ -35,7 +35,6 @@
 
 
   # Containers
-
     containers.fud = {
     autoStart = true; 
     privateNetwork = true;
@@ -52,7 +51,7 @@
       # List packages installed in system profile
       environment.systemPackages = with pkgs; [
         wget vim emacs git zsh autoconf gnumake tree 
-        ncurses rxvt_unicode openjdk leiningen
+        ncurses rxvt_unicode openjdk leiningen unzip
       ];
 
       users.extraUsers.fenton = {
@@ -87,10 +86,6 @@
     rxvt_unicode 
   ];
 
-
-  environment.sessionVariables = {
-    TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
-  };
 
   
   # List services that you want to enable:
@@ -138,7 +133,17 @@
   users.extraUsers.root = {
     openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAG5wvPKRrqqiOBKZ5dUqF5oK7vd1zNuVsrrAAQCcEkVC2SBXVy5yiCiO7xPz7Wk6oSl+5nvkitYQ4HVuNO+mroUcmbge/e344sfyOytrV2BqFTuijlc+BkBTMk55piHKBgl50l4gIdtTdKk1b0iiTxc5gdhlUr4LUF+mPc5NnuKgMEJLApoFeNKrzbR+Z5ZsLypeFNxzkaAw8mjqRoDoi1lab7tDN/KrVKZ46AYXm9Tix64MdxXI6T+p6Z+2rAQQ0ieexVtVUJBiifaKrvqgr57v8WPFk8VIYb9MbtlxtHdHz/regzZA4L6K+46QpSFeBX29esx1/tuihv/hU8ndf fenton@ss9" ];
   };
+
+
+  # System Default Shell ##########################
+  # -------------------- #
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
+  environment.sessionVariables = {
+    TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
+  };
+
+
+
   users.mutableUsers = false;
 
 
