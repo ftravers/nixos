@@ -37,6 +37,28 @@
   
   users.mutableUsers = false;
 
+  i18n = {
+    consoleFont = "Lat2-Terminus16";
+    consoleKeyMap = "us";
+    defaultLocale = "en_US.UTF-8";
+  };
+
+
+  time.timeZone = "America/Vancouver";
+
+
+  # Packages ############################################
+  # -------- #
+  environment.systemPackages = with pkgs; [
+    wget vim dhcpcd emacs firefox chromium git mkpasswd zsh rxvt_unicode
+    autoconf gnumake tree ncurses rxvt_unicode wpa_supplicant
+  ];
+
+
+  programs.bash.enableCompletion = true;
+  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+
+  
   # Enabled Services ##################################
   services.openssh.enable = true;
 
@@ -53,4 +75,11 @@
   # Enable the KDE Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-    
+
+
+   # System Default Shell ##########################
+ # -------------------- #
+ users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
+ environment.sessionVariables = {
+   TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
+ };
