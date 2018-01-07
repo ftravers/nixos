@@ -1,3 +1,24 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, ... }:
+
+{
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
+
+  # Use the GRUB 2 boot loader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  # boot.loader.grub.efiSupport = true;
+  # boot.loader.grub.efiInstallAsRemovable = true;
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # Define on which hard drive you want to install Grub.
+  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+
   # Networking #####################################
   networking = {
     # networkmanager.enable = true;
@@ -19,7 +40,7 @@
     };
 
     hostName = "ss9"; 
-  };
+};
 
   users.extraUsers.fenton = {
     isNormalUser = true;
@@ -65,7 +86,6 @@
 
   networking.firewall.enable = false;
 
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "us";
@@ -83,3 +103,9 @@
  environment.sessionVariables = {
    TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
  };
+
+  services.xserver.synaptics.enable = true;
+
+  system.stateVersion = "17.09"; # Did you read the comment?
+
+}
