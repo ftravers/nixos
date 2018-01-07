@@ -57,6 +57,6 @@
     TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
   };
   services.xserver.synaptics.enable = true;
-  system.stateVersion = "17.09"; # Did you read the comment?
+  system.stateVersion = "17.09";
 }
 
