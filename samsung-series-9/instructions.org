@@ -1,0 +1,58 @@
+* install samsung series 9
+
+Not disabling wireless to begin with.  Will get wifi through KDE
+desktop, and do install from there...
+
+Starting display manager to see if i can get wireless to work first.  
+
+Starting wifi, but using classic, blowfish, other doesn't work?
+
+Okay internet works...
+inet: 192.168.1.106
+
+cat /etc/resolv.conf:
+
+#+BEGIN_SRC 
+nameserver 115.178.58.26
+#+END_SRC
+
+route -n => default GW: 192.168.1.1
+
+: ip a 
+=> wlp1s0
+
+do fdisk, make 2 partitions, 2nd is swap.  first is 230G.  Make DOS
+and first one bootable, as per instructions.
+
+format as ext4
+
+get config file from:
+
+https://github.com/ftravers/nixos/tree/master/samsung-series-9
+
+nixos-rebuild test
+
+nixos-install
+
+reboot (pull out usb)
+
+now should be able to ssh into the server:
+
+: ssh fenton@192.168.1.115 (or whatever you set the ip to be)
+
+Get your keys over to the nix box, and clone the useful setup
+
+#+BEGIN_SRC 
+tar cvf ssh.tar .ssh 
+scp ssh.tar 192.168.1.115:~/ssh.tar
+ssh 192.168.1.115
+tar xvf ssh.tar
+git clone git@github.com:ftravers/nix-home.git
+cp -a nix-home/.* .
+cd /etc/nixos
+sudo rm -f configuration.nix
+sudo ln -s ~/nixos/samsung-series-9/configuration.nix .
+git config --global user.email "fenton.travers@gmail.com"
+git config --global user.name "Fenton Travers"
+#+END_SRC
+

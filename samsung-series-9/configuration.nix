@@ -83,3 +83,5 @@
  environment.sessionVariables = {
    TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
  };
+
+  services.xserver.synaptics.enable = true;
