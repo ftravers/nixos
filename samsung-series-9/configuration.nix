@@ -20,6 +20,7 @@
         environment.systemPackages = with pkgs; [
           wget vim emacs git zsh autoconf gnumake tree
           ncurses rxvt_unicode openjdk leiningen unzip
+          htop
         ];
       };
     };
