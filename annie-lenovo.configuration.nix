@@ -10,7 +10,7 @@
 
   networking = {
     firewall.enable = false;
-    networking.networkmanager.enable = true;
+    networkmanager.enable = true;
  	  hostName = "alen";
   };
 
