@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [ /etc/nixos/hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ];
 
   boot.loader.grub = {
     enable = true;
